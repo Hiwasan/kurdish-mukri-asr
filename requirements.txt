@@ -1,0 +1,5 @@
+espnet>=202509
+espnet-model-zoo
+torch>=2.9.0
+soundfile
+librosa

@@ -1,0 +1,40 @@
+# Audio data
+*.wav
+*.mp3
+*.flac
+
+# Model files  
+*.pth
+*.pt
+*.model
+*.bin
+
+# ESPnet directories
+espnet_working_dir/
+02_espnet_project/
+
+# Data directories
+00_raw_data/
+01_data_splits/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp

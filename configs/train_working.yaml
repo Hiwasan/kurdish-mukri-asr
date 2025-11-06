@@ -1,0 +1,43 @@
+# Working RNN configuration
+encoder: vgg_rnn
+encoder_conf:
+    rnn_type: lstm
+    num_layers: 2
+    hidden_size: 256
+    output_size: 256
+
+decoder: rnn
+decoder_conf:
+    rnn_type: lstm
+    num_layers: 1
+    hidden_size: 256
+
+# Optimization
+optim: adam
+optim_conf:
+    lr: 0.001
+scheduler: warmuplr
+scheduler_conf:
+    warmup_steps: 1000
+
+# Training parameters
+max_epoch: 10
+patience: 3
+batch_size: 1
+accum_grad: 1
+grad_clip: 5.0
+
+# Batch configuration - use sorted for better memory usage
+batch_type: sorted
+sort_in_batch: descending
+
+# Data augmentation
+specaug: specaug
+specaug_conf:
+    apply_time_warp: false
+    apply_time_mask: true
+    time_mask_width_range: 4
+    num_time_mask: 2
+    apply_freq_mask: true
+    freq_mask_width_range: 4
+    num_freq_mask: 2

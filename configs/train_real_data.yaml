@@ -1,0 +1,36 @@
+# Training with real transcriptions
+encoder: vgg_rnn
+encoder_conf:
+    rnn_type: lstm
+    num_layers: 3
+    hidden_size: 320
+    output_size: 320
+
+decoder: rnn
+decoder_conf:
+    rnn_type: lstm
+    num_layers: 2
+    hidden_size: 320
+
+optim: adam
+optim_conf:
+    lr: 0.0001  # Lower learning rate for fine-tuning
+
+max_epoch: 20
+patience: 5
+batch_size: 1
+accum_grad: 1
+grad_clip: 5.0
+
+batch_type: sorted
+sort_in_batch: descending
+
+specaug: specaug
+specaug_conf:
+    apply_time_warp: false
+    apply_time_mask: true
+    time_mask_width_range: 10
+    num_time_mask: 2
+    apply_freq_mask: true
+    freq_mask_width_range: 5
+    num_freq_mask: 2

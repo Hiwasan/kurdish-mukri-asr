@@ -1,0 +1,47 @@
+# Simple RNN ASR config for Kurdish
+# Model - Using simpler RNN instead of transformer
+encoder: rnn
+encoder_conf:
+    rnn_type: lstm
+    hidden_size: 320
+    num_layers: 3
+    dropout: 0.2
+
+decoder: rnn
+decoder_conf:
+    rnn_type: lstm
+    hidden_size: 320
+    num_layers: 2
+    dropout: 0.2
+
+model_conf:
+    ctc_weight: 0.3
+
+# Preprocessing
+frontend: default
+frontend_conf:
+    fs: 16k
+    n_fft: 512
+    win_length: 400
+    hop_length: 160
+    n_mels: 80
+
+# Training
+batch_type: folded
+batch_size: 2
+max_epoch: 5
+patience: 2
+
+optim: adam
+optim_conf:
+    lr: 0.001
+
+scheduler: warmuplr
+scheduler_conf:
+    warmup_steps: 1000
+
+# Tokenizer
+token_type: bpe
+bpemodel: data/token_list/bpe_unigram100/bpe.model
+
+log_interval: 10

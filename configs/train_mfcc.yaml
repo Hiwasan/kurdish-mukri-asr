@@ -1,0 +1,54 @@
+# Optimized configuration for MFCC features
+encoder: vgg_rnn
+encoder_conf:
+    rnn_type: lstm
+    num_layers: 3
+    hidden_size: 320
+    output_size: 320
+
+decoder: rnn
+decoder_conf:
+    rnn_type: lstm
+    num_layers: 2
+    hidden_size: 320
+
+# Optimization
+optim: adam
+optim_conf:
+    lr: 0.001
+scheduler: warmuplr
+scheduler_conf:
+    warmup_steps: 500
+
+# Training parameters
+max_epoch: 15
+patience: 3
+batch_size: 2
+accum_grad: 1
+grad_clip: 5.0
+
+# Batch configuration
+batch_type: sorted
+sort_in_batch: descending
+sort_batch: descending
+
+# Data augmentation
+specaug: specaug
+specaug_conf:
+    apply_time_warp: false
+    apply_time_mask: true
+    time_mask_width_range: 10
+    num_time_mask: 2
+    apply_freq_mask: true
+    freq_mask_width_range: 5
+    num_freq_mask: 2
+
+# Frontend configuration (important for MFCC)
+frontend: default
+frontend_conf:
+    n_fft: 512
+    win_length: 512  
+    hop_length: 256
+    n_mels: 80
+    fmin: 80
+    fmax: 7600
