@@ -38,3 +38,10 @@ logs/
 # Temporary files
 *.tmp
 *.temp
+
+# Kurdish data files - DO NOT UPLOAD
+00_raw_data/
+01_data_splits/
+*.tsv
+*.txt
+*.csv
